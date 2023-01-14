@@ -661,8 +661,6 @@ cat ~/.bash_histroy
 
 # Windows Template
 
-# TemplateDC
-
 # Overview
 
 - OS
