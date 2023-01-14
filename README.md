@@ -1254,7 +1254,7 @@ reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallEle
 ```
 
 
-### Web server log files? Traffic come from?
+## Web server log files? Traffic come from?
 
 ```
 # Result:
@@ -1299,7 +1299,7 @@ REG QUERY HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\
 ```
 
 
-what’s the windows build?
+## Windows build? Any Public Vulnerability?
 
 ```
 powershell -c [environment]::OSVersion.Version
