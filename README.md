@@ -1311,6 +1311,12 @@ REG QUERY HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\
 
 ```
 
+RDP Access?
+
+```
+# just open an Administrator command prompt
+```
+
 fodhelper? eventvwr?
 
 ```
