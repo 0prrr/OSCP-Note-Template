@@ -30,6 +30,30 @@ Go through them one by one, and you may need to come back and re-do the list as 
     # Result:
     
     ```
+    
+
+# Proof Files
+
+## Local proof
+
+```
+# Result:
+
+```
+
+Screenshot:
+
+
+
+## System proof
+
+```
+# Result:
+
+```
+
+Screenshot:
+
 
 # Enumeration
 
@@ -416,14 +440,6 @@ postgres:(empty)
 # Result:
 ```
 
-# Foothold
-
-Local proof
-
-```
-# Result:
-
-```
 
 # Privilege Escalation
 
@@ -688,6 +704,31 @@ Try These
 ```
 npusers, userspns, bloodhound-python, rpcclient, crackmapexec smb, crackmapexec winrm, ldapsearch, mount share.
 ```
+
+
+# Proof Files
+
+## Local proof
+
+```
+# Result:
+
+```
+
+Screenshot:
+
+
+
+## System proof
+
+```
+# Result:
+
+```
+
+Screenshot:
+
+
 
 # Enumeration
 
@@ -1193,15 +1234,6 @@ bloodhound-python -c ALL -u ldap -p 'passwd' -d domain.com -ns dc-ip
 
 ```
 
-
-# Foothold
-
-Local proof
-
-```
-# Result:
-
-```
 
 # Privilege Escalation
 
